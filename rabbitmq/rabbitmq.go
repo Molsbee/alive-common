@@ -91,3 +91,7 @@ func (r *rabbitQueue) Publish(msg interface{}) error {
 		Body:        jsonMsg,
 	})
 }
+
+func (r *rabbitQueue) Inspect() (amqp.Queue, error) {
+	return r.channel.QueueInspect(r.queueName)
+}
