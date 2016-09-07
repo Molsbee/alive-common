@@ -1,0 +1,19 @@
+{
+	"ImportPath": "github.com/molsbee/alive-common",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/jinzhu/gorm",
+			"Comment": "v1.0-63-g35a2a00",
+			"Rev": "35a2a004d880453f0bbd3716bcc63da1cb15b77b"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/inflection",
+			"Rev": "74387dc39a75e970e7a3ae6a3386b5bd2e5c5cff"
+		}
+	]
+}
