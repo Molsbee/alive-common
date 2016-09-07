@@ -81,9 +81,8 @@ func (r *rabbitQueue) Publish(msg interface{}) error {
 		return err
 	}
 
-	message := amqp.Publishing{
+	return r.channel.Publish(r.exchange, r.key, false, false, amqp.Publishing{
 		ContentType: "application/json",
 		Body:        jsonMsg,
-	}
-	return r.channel.Publish(r.exchange, r.key, false, false, message)
+	})
 }
