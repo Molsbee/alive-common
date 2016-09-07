@@ -9,7 +9,7 @@ import (
 // RabbitMQ wrapper for interacting with RabbitMQ
 type RabbitMQ interface {
 	Shutdown()
-	NewRabbitQueue(queueName, exchangeName, routingKey string, args amqp.Table) (*rabbitQueue, error)
+	NewRabbitQueue(queueName, exchangeName, routingKey string, args amqp.Table) (RabbitQueue, error)
 }
 
 // RabbitMQ wrapper for interacting with rabbit mq
@@ -59,7 +59,7 @@ type rabbitQueue struct {
 }
 
 // NewRabbitQueue construct used to define an exchange and queue and bind them together
-func (r *rabbitMQ) NewRabbitQueue(queueName, exchangeName, routingKey string, args amqp.Table) (*rabbitQueue, error) {
+func (r *rabbitMQ) NewRabbitQueue(queueName, exchangeName, routingKey string, args amqp.Table) (RabbitQueue, error) {
 	if err := r.channel.ExchangeDeclare(exchangeName, "direct", true, false, false, false, nil); err != nil {
 		return nil, err
 	}
