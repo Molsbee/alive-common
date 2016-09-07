@@ -46,6 +46,11 @@ func (r *rabbitMQ) Shutdown() {
 	r.connection.Close()
 }
 
+// RabbitQueue wrapper for interacting with a RabbitMQ queue
+type RabbitQueue interface {
+	Publish(interface{}) error
+}
+
 type rabbitQueue struct {
 	queueName string
 	exchange  string
