@@ -48,6 +48,7 @@ func (r *rabbitMQ) Shutdown() {
 
 // RabbitQueue wrapper for interacting with a RabbitMQ queue
 type RabbitQueue interface {
+	QueueName() string
 	Publish(interface{}) error
 	Inspect() (amqp.Queue, error)
 }
@@ -79,6 +80,10 @@ func (r *rabbitMQ) NewRabbitQueue(queueName, exchangeName, routingKey string, ar
 		key:       routingKey,
 		channel:   r.channel,
 	}, nil
+}
+
+func (r *rabbitQueue) QueueName() string {
+	return r.queueName
 }
 
 func (r *rabbitQueue) Publish(msg interface{}) error {
