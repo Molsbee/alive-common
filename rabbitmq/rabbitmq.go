@@ -49,6 +49,7 @@ func (r *rabbitMQ) Shutdown() {
 // RabbitQueue wrapper for interacting with a RabbitMQ queue
 type RabbitQueue interface {
 	Publish(interface{}) error
+	Inspect() (amqp.Queue, error)
 }
 
 type rabbitQueue struct {
